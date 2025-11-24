@@ -1,0 +1,44 @@
+pipeline_id: "baseline_pipeline"
+name: "Baseline Thesis Generation Pipeline"
+description: "Standard 5-stage pipeline for thesis generation"
+
+stages:
+  - stage_type: "semantic"
+    prompt_profile_name: "semantic_v1"
+    temperature: 0.7
+    max_tokens: 2000
+    enabled: true
+    depends_on: []
+
+  - stage_type: "outline"
+    prompt_profile_name: "outline_v1"
+    temperature: 0.7
+    max_tokens: 3000
+    enabled: true
+    depends_on: ["semantic"]
+
+  - stage_type: "intro"
+    prompt_profile_name: "intro_v1"
+    temperature: 0.7
+    max_tokens: 2000
+    enabled: true
+    depends_on: ["outline"]
+
+  - stage_type: "chapter1"
+    prompt_profile_name: "chapter1_v1"
+    temperature: 0.7
+    max_tokens: 4000
+    enabled: true
+    depends_on: ["intro"]
+
+  - stage_type: "review"
+    prompt_profile_name: "review_v1"
+    temperature: 0.5
+    max_tokens: 3000
+    enabled: true
+    depends_on: ["chapter1"]
+
+metadata:
+  version: "1.0"
+  created: "2024-01-01"
+

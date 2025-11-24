@@ -1,0 +1,27 @@
+# Configuration for Prompt Evolution (Mode 1)
+# Evolves prompts for a fixed pipeline structure
+
+generations: 5
+population_size_per_stage: 10
+selection_top_k: 3
+mutation_rate: 0.3
+random_seed: 42
+
+# Evaluation settings
+evaluation_topics: "all"  # Use all topics from topics file
+evaluation_metrics:
+  - "rule_based"
+  - "llm_judge"
+  - "consistency"
+
+# Evolution strategy
+evolution_strategy:
+  use_meta_improvement: true
+  use_mutation: true
+  use_crossover: false  # Not applicable for prompts
+  meta_improvement_rate: 0.5
+
+# Output settings
+save_intermediate_results: true
+save_all_prompts: false  # Only save best prompts
+

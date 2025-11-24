@@ -1,0 +1,41 @@
+# Configuration for Pipeline Evolution (Mode 2)
+# Evolves pipeline structures with fixed optimized prompts
+
+generations: 5
+population_size: 15
+selection_top_k: 5
+mutation_rate: 0.3
+crossover_rate: 0.4
+random_seed: 42
+
+# Evaluation settings
+evaluation_topics: "all"  # Use all topics from topics file
+evaluation_metrics:
+  - "rule_based"
+  - "llm_judge"
+  - "consistency"
+
+# Evolution strategy
+evolution_strategy:
+  use_meta_generation: true
+  use_mutation: true
+  use_crossover: true
+  meta_generation_rate: 0.3
+  drift_detection: true
+
+# Pipeline constraints
+pipeline_constraints:
+  min_stages: 2
+  max_stages: 10
+  required_stages: []  # No required stages
+  allowed_stage_types:
+    - "semantic"
+    - "outline"
+    - "intro"
+    - "chapter1"
+    - "review"
+
+# Output settings
+save_intermediate_results: true
+save_all_pipelines: true
+
